@@ -18,10 +18,19 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from rest_framework import routers
+from news_rest.views.users_view import UserView
+from news_rest.views.categories_view import CategoriesView
+
+router = routers.DefaultRouter()
+router.register(r"users", UserView)
+router.register(r"categories", CategoriesView)
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
     path("", include("news.urls")),
+    path("api-auth/", include("rest_framework.urls")),
+    path("api/", include(router.urls)),
+    path("admin/", admin.site.urls),
 ]
 
 if settings.DEBUG:
