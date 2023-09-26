@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  <title>Página de Detalhes da Notícia</title>
+{% endblock %}
+
+{% block content %}
+  <div style="margin-top: 100px;">
+    <h1 class="news-title">{{ news_details.title }}</h1>
+    <p class="news-content">{{ news_details.content }}</p>
+    {% for categorie in news_details.categories.all %}
+    <span class="news-categories">Categoria: {{ categorie.name }}</span>
+    {% endfor %}
+    <span class="news-author">Autor: {{ news_details.author }}</span>
+    <br>
+    <img src="{% static news_details.image.url %}" alt="{{ news_details.title }}">
+    <br>
+    <span class="news-date">data da postagem: {{ news_details.created_at|date:"d/m/Y" }}</span>
+  </div>
+{% endblock %}

@@ -28,7 +28,7 @@ class News(models.Model):
 
     image = models.ImageField(blank=True, null=True, upload_to="img/")
 
-    categories = models.ManyToManyField("Categories")
+    categories = models.ManyToManyField("Categories", blank=True, null=True)
 
     def __str__(self):
         return self.title

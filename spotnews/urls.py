@@ -19,12 +19,13 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework import routers
-from news_rest.views.users_view import UserView
 from news_rest.views.categories_view import CategoriesView
+from news_rest.views.users_view import UserView
+
 
 router = routers.DefaultRouter()
-router.register(r"users", UserView)
 router.register(r"categories", CategoriesView)
+router.register(r"users", UserView)
 
 urlpatterns = [
     path("", include("news.urls")),
